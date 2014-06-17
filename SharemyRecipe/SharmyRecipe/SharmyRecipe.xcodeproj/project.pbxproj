@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB3D0BEC1950488E007229B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0BEB1950488E007229B7 /* Foundation.framework */; };
+		BB3D0BEE1950488E007229B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0BED1950488E007229B7 /* CoreGraphics.framework */; };
+		BB3D0BF01950488E007229B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0BEF1950488E007229B7 /* UIKit.framework */; };
+		BB3D0BF61950488E007229B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB3D0BF41950488E007229B7 /* InfoPlist.strings */; };
+		BB3D0BF81950488E007229B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3D0BF71950488E007229B7 /* main.m */; };
+		BB3D0BFC1950488E007229B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3D0BFB1950488E007229B7 /* AppDelegate.m */; };
+		BB3D0BFF1950488E007229B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3D0BFD1950488E007229B7 /* Main.storyboard */; };
+		BB3D0C021950488E007229B7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3D0C011950488E007229B7 /* MainViewController.m */; };
+		BB3D0C051950488E007229B7 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3D0C041950488E007229B7 /* FlipsideViewController.m */; };
+		BB3D0C071950488E007229B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3D0C061950488E007229B7 /* Images.xcassets */; };
+		BB3D0C0E1950488E007229B7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0C0D1950488E007229B7 /* XCTest.framework */; };
+		BB3D0C0F1950488E007229B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0BEB1950488E007229B7 /* Foundation.framework */; };
+		BB3D0C101950488E007229B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0BEF1950488E007229B7 /* UIKit.framework */; };
+		BB3D0C181950488E007229B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB3D0C161950488E007229B7 /* InfoPlist.strings */; };
+		BB3D0C1A1950488E007229B7 /* SharmyRecipeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3D0C191950488E007229B7 /* SharmyRecipeTests.m */; };
+		BB3D0C24195048D4007229B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3D0C23195048D4007229B7 /* FacebookSDK.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB3D0C111950488E007229B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB3D0BE01950488E007229B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB3D0BE71950488E007229B7;
+			remoteInfo = SharmyRecipe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB3D0BE81950488E007229B7 /* SharmyRecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharmyRecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB3D0BEB1950488E007229B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BB3D0BED1950488E007229B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BB3D0BEF1950488E007229B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BB3D0BF31950488E007229B7 /* SharmyRecipe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SharmyRecipe-Info.plist"; sourceTree = "<group>"; };
+		BB3D0BF51950488E007229B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB3D0BF71950488E007229B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BB3D0BF91950488E007229B7 /* SharmyRecipe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SharmyRecipe-Prefix.pch"; sourceTree = "<group>"; };
+		BB3D0BFA1950488E007229B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BB3D0BFB1950488E007229B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BB3D0BFE1950488E007229B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BB3D0C001950488E007229B7 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BB3D0C011950488E007229B7 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BB3D0C031950488E007229B7 /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		BB3D0C041950488E007229B7 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		BB3D0C061950488E007229B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BB3D0C0C1950488E007229B7 /* SharmyRecipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharmyRecipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB3D0C0D1950488E007229B7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BB3D0C151950488E007229B7 /* SharmyRecipeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SharmyRecipeTests-Info.plist"; sourceTree = "<group>"; };
+		BB3D0C171950488E007229B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB3D0C191950488E007229B7 /* SharmyRecipeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharmyRecipeTests.m; sourceTree = "<group>"; };
+		BB3D0C23195048D4007229B7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB3D0BE51950488E007229B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0BEE1950488E007229B7 /* CoreGraphics.framework in Frameworks */,
+				BB3D0C24195048D4007229B7 /* FacebookSDK.framework in Frameworks */,
+				BB3D0BF01950488E007229B7 /* UIKit.framework in Frameworks */,
+				BB3D0BEC1950488E007229B7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB3D0C091950488E007229B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0C0E1950488E007229B7 /* XCTest.framework in Frameworks */,
+				BB3D0C101950488E007229B7 /* UIKit.framework in Frameworks */,
+				BB3D0C0F1950488E007229B7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB3D0BDF1950488E007229B7 = {
+			isa = PBXGroup;
+			children = (
+				BB3D0BF11950488E007229B7 /* SharmyRecipe */,
+				BB3D0C131950488E007229B7 /* SharmyRecipeTests */,
+				BB3D0BEA1950488E007229B7 /* Frameworks */,
+				BB3D0BE91950488E007229B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB3D0BE91950488E007229B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0BE81950488E007229B7 /* SharmyRecipe.app */,
+				BB3D0C0C1950488E007229B7 /* SharmyRecipeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB3D0BEA1950488E007229B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0C23195048D4007229B7 /* FacebookSDK.framework */,
+				BB3D0BEB1950488E007229B7 /* Foundation.framework */,
+				BB3D0BED1950488E007229B7 /* CoreGraphics.framework */,
+				BB3D0BEF1950488E007229B7 /* UIKit.framework */,
+				BB3D0C0D1950488E007229B7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB3D0BF11950488E007229B7 /* SharmyRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0BFA1950488E007229B7 /* AppDelegate.h */,
+				BB3D0BFB1950488E007229B7 /* AppDelegate.m */,
+				BB3D0BFD1950488E007229B7 /* Main.storyboard */,
+				BB3D0C001950488E007229B7 /* MainViewController.h */,
+				BB3D0C011950488E007229B7 /* MainViewController.m */,
+				BB3D0C031950488E007229B7 /* FlipsideViewController.h */,
+				BB3D0C041950488E007229B7 /* FlipsideViewController.m */,
+				BB3D0C061950488E007229B7 /* Images.xcassets */,
+				BB3D0BF21950488E007229B7 /* Supporting Files */,
+			);
+			path = SharmyRecipe;
+			sourceTree = "<group>";
+		};
+		BB3D0BF21950488E007229B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0BF31950488E007229B7 /* SharmyRecipe-Info.plist */,
+				BB3D0BF41950488E007229B7 /* InfoPlist.strings */,
+				BB3D0BF71950488E007229B7 /* main.m */,
+				BB3D0BF91950488E007229B7 /* SharmyRecipe-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB3D0C131950488E007229B7 /* SharmyRecipeTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0C191950488E007229B7 /* SharmyRecipeTests.m */,
+				BB3D0C141950488E007229B7 /* Supporting Files */,
+			);
+			path = SharmyRecipeTests;
+			sourceTree = "<group>";
+		};
+		BB3D0C141950488E007229B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D0C151950488E007229B7 /* SharmyRecipeTests-Info.plist */,
+				BB3D0C161950488E007229B7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB3D0BE71950488E007229B7 /* SharmyRecipe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB3D0C1D1950488E007229B7 /* Build configuration list for PBXNativeTarget "SharmyRecipe" */;
+			buildPhases = (
+				BB3D0BE41950488E007229B7 /* Sources */,
+				BB3D0BE51950488E007229B7 /* Frameworks */,
+				BB3D0BE61950488E007229B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharmyRecipe;
+			productName = SharmyRecipe;
+			productReference = BB3D0BE81950488E007229B7 /* SharmyRecipe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB3D0C0B1950488E007229B7 /* SharmyRecipeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB3D0C201950488E007229B7 /* Build configuration list for PBXNativeTarget "SharmyRecipeTests" */;
+			buildPhases = (
+				BB3D0C081950488E007229B7 /* Sources */,
+				BB3D0C091950488E007229B7 /* Frameworks */,
+				BB3D0C0A1950488E007229B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB3D0C121950488E007229B7 /* PBXTargetDependency */,
+			);
+			name = SharmyRecipeTests;
+			productName = SharmyRecipeTests;
+			productReference = BB3D0C0C1950488E007229B7 /* SharmyRecipeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB3D0BE01950488E007229B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = nicolegertsen;
+				TargetAttributes = {
+					BB3D0C0B1950488E007229B7 = {
+						TestTargetID = BB3D0BE71950488E007229B7;
+					};
+				};
+			};
+			buildConfigurationList = BB3D0BE31950488E007229B7 /* Build configuration list for PBXProject "SharmyRecipe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BB3D0BDF1950488E007229B7;
+			productRefGroup = BB3D0BE91950488E007229B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB3D0BE71950488E007229B7 /* SharmyRecipe */,
+				BB3D0C0B1950488E007229B7 /* SharmyRecipeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB3D0BE61950488E007229B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0C071950488E007229B7 /* Images.xcassets in Resources */,
+				BB3D0BF61950488E007229B7 /* InfoPlist.strings in Resources */,
+				BB3D0BFF1950488E007229B7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB3D0C0A1950488E007229B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0C181950488E007229B7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB3D0BE41950488E007229B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0BFC1950488E007229B7 /* AppDelegate.m in Sources */,
+				BB3D0C021950488E007229B7 /* MainViewController.m in Sources */,
+				BB3D0C051950488E007229B7 /* FlipsideViewController.m in Sources */,
+				BB3D0BF81950488E007229B7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB3D0C081950488E007229B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3D0C1A1950488E007229B7 /* SharmyRecipeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB3D0C121950488E007229B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB3D0BE71950488E007229B7 /* SharmyRecipe */;
+			targetProxy = BB3D0C111950488E007229B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB3D0BF41950488E007229B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB3D0BF51950488E007229B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BB3D0BFD1950488E007229B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB3D0BFE1950488E007229B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BB3D0C161950488E007229B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB3D0C171950488E007229B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB3D0C1B1950488E007229B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BB3D0C1C1950488E007229B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB3D0C1E1950488E007229B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Nicole/Documents/FacebookSDK,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SharmyRecipe/SharmyRecipe-Prefix.pch";
+				INFOPLIST_FILE = "SharmyRecipe/SharmyRecipe-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BB3D0C1F1950488E007229B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Nicole/Documents/FacebookSDK,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SharmyRecipe/SharmyRecipe-Prefix.pch";
+				INFOPLIST_FILE = "SharmyRecipe/SharmyRecipe-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BB3D0C211950488E007229B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SharmyRecipe.app/SharmyRecipe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SharmyRecipe/SharmyRecipe-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SharmyRecipeTests/SharmyRecipeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BB3D0C221950488E007229B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SharmyRecipe.app/SharmyRecipe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SharmyRecipe/SharmyRecipe-Prefix.pch";
+				INFOPLIST_FILE = "SharmyRecipeTests/SharmyRecipeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB3D0BE31950488E007229B7 /* Build configuration list for PBXProject "SharmyRecipe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB3D0C1B1950488E007229B7 /* Debug */,
+				BB3D0C1C1950488E007229B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB3D0C1D1950488E007229B7 /* Build configuration list for PBXNativeTarget "SharmyRecipe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB3D0C1E1950488E007229B7 /* Debug */,
+				BB3D0C1F1950488E007229B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BB3D0C201950488E007229B7 /* Build configuration list for PBXNativeTarget "SharmyRecipeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB3D0C211950488E007229B7 /* Debug */,
+				BB3D0C221950488E007229B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB3D0BE01950488E007229B7 /* Project object */;
+}
