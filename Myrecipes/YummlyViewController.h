@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 
--(void)yummlyAPI;
+-(void)yummlyAPI:(NSString *)searchText;
 - (IBAction)btnBack:(id)sender;
 
 @end

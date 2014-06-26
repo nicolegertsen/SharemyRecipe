@@ -40,13 +40,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setNavigationItem];
 }
+
+// Custom the Navigation Item
+-(void)setNavigationItem {
+    
+    CGRect frame = CGRectMake(0, 0, 400, 44);
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"Chalkduster" size:24.0f];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    label.text = @"My Recipes";
+    self.navigationItem.titleView = label;
+    
+    UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logokleiner.png"]];
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:image];
+    self.navigationItem.leftBarButtonItem = backBarButton;
+}
+
 -(void)viewDidAppear:(BOOL)animated {
  
     [super viewDidAppear:animated];
@@ -54,13 +67,20 @@
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Recipes"];
     self.recipearray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    //[self.recipearray addObject:self.recipe];
     [self.tableView reloadData];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Transform the data of the image back to original image
+-(UIImage *)dataToImage:(NSData *)pictureData{
+    
+    UIImage * originalImage = [UIImage imageWithData:pictureData];
+    return originalImage;
 }
 
 #pragma mark - Table view data source
@@ -72,7 +92,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.recipearray.count;
+        return self.recipearray.count;
 }
 
 
@@ -81,17 +101,29 @@
     static NSString *Cellidentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cellidentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    NSManagedObject *device = [self.recipearray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"name"]]];
-    [cell.detailTextLabel setText:[device valueForKey:@"ingredients"]];
-    
+    [self configureTheCell:cell cellForRowAtIndexPath:indexPath];
     return cell;
 }
 
-
+// Configure the tableviewcell
+-(void)configureTheCell:(UITableViewCell *)cell cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObject *device = [self.recipearray objectAtIndex:indexPath.row];
+    UIImage *image = [self dataToImage:[device valueForKey:@"image"]];
+    
+    UIGraphicsBeginImageContext(CGSizeMake(92,73));
+    [image drawInRect:CGRectMake(1, 1, 92, 73)]; //
+    UIImage *newThumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kleinererodepeper.png"]]];
+    [cell.textLabel setBackgroundColor:[UIColor clearColor]];
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 2;
+    [cell.textLabel setFont:[UIFont fontWithName:@"Chalkduster" size:14.0f]];
+    [cell.imageView setImage:newThumbnail];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [device valueForKey:@"name"]]];
+    [cell.detailTextLabel setText:@""];
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,8 +131,6 @@
     //Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,24 +151,6 @@
          }
 }
 
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -151,4 +163,15 @@
     }
 }
 
+// Alert
+- (void)alertWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate
+{
+    // show alert view
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:delegate
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 @end

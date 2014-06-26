@@ -31,15 +31,20 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
 
+// Set the details of the recipe cell
 -(void)setDetailsWithRecipe: (Recipe *)recipe {
     
     dishTitle.text = recipe.name;
-    dishIngredients.text = recipe.ingredients;
-    
+    int i = 0;
+    NSMutableString *ingredientList = [[NSMutableString alloc] init];
+    for (NSString *ingredient in recipe.ingredients) {
+        i++;
+        [ingredientList appendString:ingredient];
+    }
+    dishIngredients.text = ingredientList;
+
     if (recipe.imageData) {
         
         UIImage *image = [UIImage imageWithData:recipe.imageData];

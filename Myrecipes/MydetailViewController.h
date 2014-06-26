@@ -8,18 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MydetailViewController : UIViewController <UITextViewDelegate, UIScrollViewDelegate>
+@interface MydetailViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *descriptions;
 @property (weak, nonatomic) IBOutlet UITextView *ingredientstextfield;
-//@property (weak, nonatomic) IBOutlet UIImageView *image;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (strong) NSManagedObject *recipedb;
 
 - (IBAction)btnSave:(id)sender;
 - (IBAction)btnBack:(id)sender;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
+- (IBAction)selectPhoto:(UIButton *)sender;
+- (IBAction)takePhoto:(UIButton *)sender;
+
+-(IBAction)textFieldReturn:(id)sender;
+-(IBAction)backgroundTouched:(id)sender;
 
 @end

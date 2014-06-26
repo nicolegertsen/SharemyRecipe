@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MydetailViewController.m"
-            timestampString = "425313470.58418"
+            filePath = "YummlyDetailViewController.m"
+            timestampString = "425489401.506753"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-textViewDidBeginEditing:"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-setDetailsOfView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

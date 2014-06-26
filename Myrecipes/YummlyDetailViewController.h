@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dishIngredients;
 @property (nonatomic, retain) Recipe *recipe;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
+
 @property (strong) NSManagedObject *recipedb;
 
 - (IBAction)btnSave:(id)sender;

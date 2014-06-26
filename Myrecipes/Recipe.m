@@ -15,6 +15,7 @@
 @synthesize ingredients;
 @synthesize imageData;
 
+// Fast scrolling through table view (not loading each image every time)
 -(void) loadData {
     
     NSURL *url = [NSURL URLWithString:self.thumbNail];

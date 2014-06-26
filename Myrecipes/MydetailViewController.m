@@ -16,37 +16,103 @@
 @implementation MydetailViewController
 @synthesize recipedb;
 @synthesize scrollview;
+@synthesize name;
+@synthesize descriptions;
+@synthesize ingredientstextfield;
+@synthesize imageView;
 
 - (void)viewDidLoad
 {
     scrollview.frame = CGRectMake(0, 0, 320, 460);
-    self.ingredientstextfield.delegate = self;
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    name.delegate = self;
+    descriptions.delegate = self;
+    ingredientstextfield.delegate = self;
+    [self setReturnKey];
+    
     if (self.recipedb) {
-        [self.name setText:[self.recipedb valueForKey:@"name"]];
-        [self.descriptions setText:[self.recipedb valueForKey:@"descriptions"]];
-        //[self.ingredients setText:[self.recipedb valueForKey:@"ingredients"]];
-        [self.ingredientstextfield setText:[self.recipedb valueForKey:@"ingredients"]];
-        //[self.image setView:[self.recipedb valueForKey:@"image"]];
-        
+        [self setContentDetail];
+    }
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [self alertWithTitle:@"Error" message:@"Device has no camera" delegate:self];
     }
 }
 
--(BOOL)textViewDidBeginEditing:(UITextField *)textField
+- (void)didReceiveMemoryWarning
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.35f];
-    CGRect frame = self.view.frame;
-    frame.origin.y = -100;
-    [self.view setFrame:frame];
-    [UIView commitAnimations];
-    return YES;
+    [super didReceiveMemoryWarning];
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.name resignFirstResponder];
+// Set the content of the Detail View
+-(void)setContentDetail {
+    
+    [self.name setText:[self.recipedb valueForKey:@"name"]];
+    [self.descriptions setText:[self.recipedb valueForKey:@"descriptions"]];
+    [self.ingredientstextfield setText:[self.recipedb valueForKey:@"ingredients"]];
+    UIImage *image = [self dataToImage:[self.recipedb valueForKey:@"image"]];
+    [self.imageView setImage:image];
+}
+
+// Set action for 'Take Photo' button
+- (IBAction)takePhoto:(UIButton *)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+// Set action for 'Select Photo' button
+- (IBAction)selectPhoto:(UIButton *)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+// Set select option for chosen image
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+// Set cancel option for image
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+# pragma mark set options for keyboard
+
+// Set the ReturnKey of keyboard
+-(void)setReturnKey{
+    
+    [self.name setReturnKeyType:UIReturnKeyDone];
+    [self.descriptions setReturnKeyType:UIReturnKeyDone];
+    [self.ingredientstextfield setReturnKeyType:UIReturnKeyGo];
+    
+}
+
+-(IBAction)textFieldReturn:(id)sender {
+    
+    [sender resignFirstResponder];
+}
+
+-(IBAction)backgroundTouched:(id)sender {
+    
+    [name resignFirstResponder];
+    [descriptions resignFirstResponder];
+    [ingredientstextfield resignFirstResponder];
 }
 
 -(NSManagedObjectContext *) ManagedObjectContext {
@@ -59,51 +125,54 @@
     return context;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//  Set values for recipe
+-(void)setValueAfterSave {
+    
+    [self.recipedb setValue:self.name.text forKey:@"name"];
+    [self.recipedb setValue:self.ingredientstextfield.text forKey:@"ingredients"];
+    [self.recipedb setValue:[self convertImageToData] forKey:@"image"];
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setValueAfterNewDeviceSave{
+    
+    NSManagedObjectContext *context = [self ManagedObjectContext];
+    NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Recipes" inManagedObjectContext:context];
+    [newDevice setValue:self.name.text forKey:@"name"];
+    [newDevice setValue:self.ingredientstextfield.text forKey:@"ingredients"];
+    [newDevice setValue:[self convertImageToData] forKey:@"image"];
 }
-*/
 
+// Convert the data of the image back to orignal data
+-(UIImage *)dataToImage:(NSData *)pictureData{
+    
+    UIImage * originalImage = [UIImage imageWithData:pictureData];
+    return originalImage;
+}
+
+// Convert the image to Data (for .xcdatamodeld)
+-(NSData *)convertImageToData{
+   
+    UIImage *image = self.imageView.image;
+    CGFloat compression = 0.9f;
+    NSData* pictureData = UIImageJPEGRepresentation(image, compression);
+    return pictureData;
+    
+}
+
+// Set actions for buttons
 - (IBAction)btnSave:(id)sender {
     NSManagedObjectContext *context = [self ManagedObjectContext];
-    
-    
     if (self.recipedb) {
-        [self.recipedb setValue:self.name.text forKey:@"name"];
-        [self.recipedb setValue:self.descriptions.text forKey:@"descriptions"];
-        //[self.recipedb setValue:self.ingredients.text forKey:@"ingredients"];
-        [self.recipedb setValue:self.ingredientstextfield.text forKey:@"ingredients"];
+        [self setValueAfterSave];
     }
     else {
-        NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Recipes" inManagedObjectContext:context];
-        [newDevice setValue:self.name.text forKey:@"name"];
-        [newDevice setValue:self.descriptions.text forKey:@"descriptions"];
-        //[newDevice setValue:self.ingredients.text forKey:@"ingredients"];
-        [newDevice setValue:self.ingredientstextfield.text forKey:@"ingredients"];
-
+        [self setValueAfterNewDeviceSave];
     }
     NSError *error = nil;
     if (![context save:&error]){
         NSLog(@"Can't save! %@ %@", error, [error localizedDescription]);
     }
-    /*
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MyrecipesViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Myrecipes"];
-    [vc setModalPresentationStyle:UIModalPresentationNone];
-    [self presentViewController:vc animated:YES completion:nil];
-     */
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.name resignFirstResponder];
 	[self.descriptions resignFirstResponder];
@@ -113,4 +182,17 @@
 - (IBAction)btnBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+// Alert
+- (void)alertWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate
+{
+    // show alert view
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:delegate
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 @end

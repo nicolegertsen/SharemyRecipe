@@ -20,6 +20,7 @@
 @synthesize dishIngredients;
 @synthesize recipe;
 @synthesize recipedb;
+@synthesize scrollview;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,16 +36,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (self.recipedb) {
-        dishImage.image = [UIImage imageWithData:recipe.imageData];
-        dishTitle.text = recipe.name;
-        dishIngredients.text = recipe.ingredients;
-        //[self.recipedb setValue:self.recipe.name forKey:@"name"];
-        NSLog(@"%@", recipe.name);
-        NSLog(@"%@", recipedb);
+        [self setDetailsOfView];
         MydetailViewController *mdvc = [[MydetailViewController alloc] init];
         self.recipedb = mdvc.recipedb;
-
     }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+// Set details of Yummly recipe
+-(void)setDetailsOfView
+{
+    dishImage.image = [UIImage imageWithData:recipe.imageData];
+    dishTitle.text = recipe.name;
+    scrollview.frame = CGRectMake(25.0f, 168.0f, 270.0f, 127.0f);
+    int i = 0;
+    NSMutableString *ingredientList = [[NSMutableString alloc] init];
+    for (NSString *ingredient in recipe.ingredients) {
+        i++;
+        NSString *myString = [NSString stringWithFormat:@"%@, ",ingredient];
+        [ingredientList appendString:myString];
+    }
+    dishIngredients.text = ingredientList;
+    dishIngredients.contentScaleFactor = (25.0f, 168.0f, 270.0f, 127.0f);
+    dishIngredients.lineBreakMode = UILineBreakModeWordWrap;
+    dishIngredients.numberOfLines = 0;
+    [dishIngredients sizeToFit];
+    //[self.view addSubview:dishIngredients];
+    scrollview.contentSize = CGSizeMake(scrollview.contentSize.width, dishIngredients.frame.size.height);
+    [scrollview addSubview:dishIngredients];
+    [self.view addSubview:scrollview];
 }
 
 -(NSManagedObjectContext *) ManagedObjectContext {
@@ -57,23 +81,41 @@
     return context;
 }
 
+// Set values for recipe
+-(void)setValueAfterSafe {
+    
+    [self.recipedb setValue:self.dishTitle.text forKey:@"name"];
+    [self.recipedb setValue:self.dishIngredients.text forKey:@"ingredients"];
+    [self.recipedb setValue:[self convertImageToData] forKey:@"image"];
+}
+
+-(void)setValueAfterNewDeviceSafe{
+    
+    NSManagedObjectContext *context = [self ManagedObjectContext];
+    NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Recipes" inManagedObjectContext:context];
+    [newDevice setValue:self.dishTitle.text forKey:@"name"];
+    [newDevice setValue:self.dishIngredients.text forKey:@"ingredients"];
+    [newDevice setValue:[self convertImageToData] forKey:@"image"];
+}
+
+// Convert image to data
+-(NSData *)convertImageToData{
+    
+    UIImage *image = self.dishImage.image;
+    CGFloat compression = 0.9f;
+    NSData* pictureData = UIImageJPEGRepresentation(image, compression);
+    return pictureData;
+    
+}
+
+// Set buttons
 - (IBAction)btnSave:(id)sender {
     NSManagedObjectContext *context = [self ManagedObjectContext];
-    //[self.recipedb addObject: self.recipe];
     if (self.recipedb) {
-        [self.recipedb setValue:self.dishTitle.text forKey:@"name"];
-        NSLog(@"%@", self.dishTitle.text);
-        //[self.recipedb setValue:self.descriptions.text forKey:@"descriptions"];
-        [self.recipedb setValue:self.dishIngredients.text forKey:@"ingredients"];
-        //[self.recipedb setValue:self.dishIngredientstextfield.text forKey:@"ingredients"];
-        
+        [self setValueAfterSafe];
     }
     else {
-        NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"Recipes" inManagedObjectContext:context];
-        [newDevice setValue:self.dishTitle.text forKey:@"name"];
-        //[newDevice setValue:self.descriptions.text forKey:@"descriptions"];
-        [newDevice setValue:self.dishIngredients.text forKey:@"ingredients"];
-        //[newDevice setValue:self.ingredientstextfield.text forKey:@"ingredients"];
+        [self setValueAfterNewDeviceSafe];
         
     }
     NSError *error = nil;
@@ -82,19 +124,12 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.dishTitle resignFirstResponder];
-	//[self.descriptions resignFirstResponder];
 	[self.dishIngredients resignFirstResponder];
 }
 
 
 - (IBAction)btnBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
