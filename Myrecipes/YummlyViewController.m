@@ -130,7 +130,8 @@
 }
 
 // Retrieve information from Yummly API
--(void)yummlyAPI:(NSString *)searchtext {
+-(void)yummlyAPI:(NSString *)searchtext
+{
     NSMutableString *stringURL = [[NSMutableString alloc] initWithFormat: @"http://api.yummly.com/v1/api/recipes?_app_id=2c0c85c6&_app_key=70ef4206d17fcdc1f98b6191f0eea461&q=" ];
     [stringURL appendString:searchtext];
     NSURL *req = [NSURL URLWithString: stringURL];
@@ -139,6 +140,7 @@
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:rawdata options:kNilOptions error:&error];
     
     NSArray *recipeArray = (NSArray *)[dictionary objectForKey:@"matches"];
+    NSLog(@"%@", dictionary);
     
     totalStrings = [[NSMutableArray alloc] init];
     
@@ -146,9 +148,10 @@
     
         Recipe *recipe = [[Recipe alloc] init];
         recipe.name = [dic objectForKey:@"recipeName"];
-        recipe.thumbNail = [[dic objectForKey:@"smallImageUrls"] objectAtIndex:0];
+        NSDictionary *imagedic = [dic objectForKey:@"imageUrlsBySize"];
+        recipe.thumbNail = [imagedic objectForKey:@"90"];
         recipe.ingredients = [dic objectForKey:@"ingredients"];
-        
+
         [totalStrings addObject:recipe];
     }
     

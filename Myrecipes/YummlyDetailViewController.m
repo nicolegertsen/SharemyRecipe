@@ -53,19 +53,14 @@
     dishImage.image = [UIImage imageWithData:recipe.imageData];
     dishTitle.text = recipe.name;
     scrollview.frame = CGRectMake(25.0f, 168.0f, 270.0f, 127.0f);
-    int i = 0;
     NSMutableString *ingredientList = [[NSMutableString alloc] init];
     for (NSString *ingredient in recipe.ingredients) {
-        i++;
         NSString *myString = [NSString stringWithFormat:@"%@, ",ingredient];
         [ingredientList appendString:myString];
     }
     dishIngredients.text = ingredientList;
-    dishIngredients.contentScaleFactor = (25.0f, 168.0f, 270.0f, 127.0f);
-    dishIngredients.lineBreakMode = UILineBreakModeWordWrap;
     dishIngredients.numberOfLines = 0;
     [dishIngredients sizeToFit];
-    //[self.view addSubview:dishIngredients];
     scrollview.contentSize = CGSizeMake(scrollview.contentSize.width, dishIngredients.frame.size.height);
     [scrollview addSubview:dishIngredients];
     [self.view addSubview:scrollview];

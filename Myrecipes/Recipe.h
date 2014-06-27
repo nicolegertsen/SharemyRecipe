@@ -12,10 +12,8 @@
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *thumbNail;
-//@property (nonatomic, copy) NSString *ingredients;
 @property (nonatomic, copy) NSArray *ingredients;
 @property (nonatomic, retain) NSData *imageData;
-
 
 -(void) loadData;
 

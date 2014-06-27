@@ -37,10 +37,8 @@
 -(void)setDetailsWithRecipe: (Recipe *)recipe {
     
     dishTitle.text = recipe.name;
-    int i = 0;
     NSMutableString *ingredientList = [[NSMutableString alloc] init];
     for (NSString *ingredient in recipe.ingredients) {
-        i++;
         [ingredientList appendString:ingredient];
     }
     dishIngredients.text = ingredientList;
@@ -48,13 +46,11 @@
     if (recipe.imageData) {
         
         UIImage *image = [UIImage imageWithData:recipe.imageData];
-        
         dishImageView.image = image;
     }
     else {
         [recipe loadData];
         UIImage *image = [UIImage imageWithData:recipe.imageData];
-        
         dishImageView.image = image;
     }
 }

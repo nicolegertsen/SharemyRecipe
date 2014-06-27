@@ -18,6 +18,12 @@
 @implementation MyrecipesViewController
 @synthesize recipearray;
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setNavigationItem];
+}
+
 -(NSManagedObjectContext *)managedObjectContext {
     
     NSManagedObjectContext *context = nil;
@@ -37,12 +43,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self setNavigationItem];
-}
-
 // Custom the Navigation Item
 -(void)setNavigationItem {
     
@@ -50,7 +50,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont fontWithName:@"Chalkduster" size:24.0f];
-    label.textAlignment = UITextAlignmentCenter;
+    //label.textAlignment = UITextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.text = @"My Recipes";
     self.navigationItem.titleView = label;
@@ -117,7 +117,7 @@
     UIGraphicsEndImageContext();
     [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kleinererodepeper.png"]]];
     [cell.textLabel setBackgroundColor:[UIColor clearColor]];
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    //cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 2;
     [cell.textLabel setFont:[UIFont fontWithName:@"Chalkduster" size:14.0f]];
     [cell.imageView setImage:newThumbnail];
@@ -148,7 +148,7 @@
         
         [self.recipearray removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-         }
+    }
 }
 
 #pragma mark - Navigation
@@ -156,22 +156,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-        if ([[segue identifier] isEqualToString:@"UpdateRecipe"]) {
+    if ([[segue identifier] isEqualToString:@"UpdateRecipe"]) {
         NSManagedObject *selectedDevice = [self.recipearray objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         MydetailViewController *destViewController = segue.destinationViewController;
         destViewController.recipedb = selectedDevice;
     }
 }
 
-// Alert
-- (void)alertWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate
-{
-    // show alert view
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message
-                                                   delegate:delegate
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
 @end
